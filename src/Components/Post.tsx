@@ -9,7 +9,7 @@ interface PostProps {
     name: string;
     role: string;
   };
-  content: [{ type: string; content: string }];
+  content: [{type: string ,  contentText: string} ];
   publishedAt: Date;
 }
 export function Post({ author, content, publishedAt }: PostProps) {
@@ -42,11 +42,11 @@ export function Post({ author, content, publishedAt }: PostProps) {
       <div className={styles.content}>
         {content.map((line) => {
           if (line.type === 'paragraph') {
-            return <p>{line.content}</p>;
+            return <p>{line.contentText}</p>;
           } else if (line.type === 'link') {
             return (
               <p>
-                <a href="#">{line.content}</a>
+                <a href="#">{line.contentText}</a>
               </p>
             );
           }
