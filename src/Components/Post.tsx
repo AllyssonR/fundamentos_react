@@ -4,6 +4,7 @@ import ptBR from 'date-fns/locale/pt-BR';
 import { Comment } from './Comment';
 import styles from './Post.module.css';
 import { FormEvent, useState } from 'react';
+import uuid from 'react-uuid';
 interface PostProps {
   author: {
     avatarUrl: string;
@@ -33,6 +34,9 @@ export function Post({ author, content, publishedAt }: PostProps) {
   function handleNewCommentChange(event: FormEvent) {
     setNewCommentText(event.target.value);
   }
+  function deleteComment(comment: string) {
+    console.log(`Deletar comentario ${comment}`);
+  }
   return (
     <article className={styles.post}>
       <header>
@@ -53,10 +57,10 @@ export function Post({ author, content, publishedAt }: PostProps) {
       <div className={styles.content}>
         {content.map((line) => {
           if (line.type === 'paragraph') {
-            return <p>{line.contentText}</p>;
+            return <p key={uuid()}>{line.contentText}</p>;
           } else if (line.type === 'link') {
             return (
-              <p>
+              <p key={uuid()}>
                 <a href="#">{line.contentText}</a>
               </p>
             );
@@ -76,7 +80,7 @@ export function Post({ author, content, publishedAt }: PostProps) {
       </form>
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment content={comment} />;
+          return <Comment key={uuid()} content={comment} deleteComment={deleteComment}/>;
         })}
       </div>
     </article>

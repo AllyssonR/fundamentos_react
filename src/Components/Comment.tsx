@@ -3,8 +3,12 @@ import { Avatar } from './Avatar';
 import styles from './Comment.module.css';
 interface CommentProps {
   content: string;
+  deleteComment: () => string;
 }
-export function Comment({ content }: CommentProps) {
+export function Comment({ content, deleteComment }: CommentProps) {
+  function handleDeleteComment() {
+    deleteComment(content);
+  }
   return (
     <div className={styles.comment}>
       <Avatar hasBorder={false} src="https://github.com/diego3g.png" />
@@ -17,7 +21,7 @@ export function Comment({ content }: CommentProps) {
                 Cerca de 2h atrás
               </time>
             </div>
-            <button title="Deletar Comentario">
+            <button onClick={handleDeleteComment} title="Deletar Comentario">
               <Trash size={24} />
             </button>
           </header>

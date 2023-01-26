@@ -32,13 +32,13 @@ const posts = [
       role: 'Edutator @Rocketseat',
     },
     content: [
-      { type: 'paragraph', content: 'Fala galeraa 👏' },
+      { type: 'paragraph', contentText: 'Fala galeraa 👏' },
       {
         type: 'paragraph',
         content:
           ' Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
       },
-      { type: 'link', content: 'jane.design/doctorCare' },
+      { type: 'link', contentText: 'jane.design/doctorCare' },
     ],
     publishedAt: new Date('2022-05-07 20:00:00'),
   },
