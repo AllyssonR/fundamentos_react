@@ -85,7 +85,7 @@ export function Post({ author, content, publishedAt }: PostProps) {
             <Comment
               key={uuid()}
               content={comment}
-              deleteComment={deleteComment}
+              onDeleteComment={deleteComment}
             />
           );
         })}
