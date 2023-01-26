@@ -14,6 +14,7 @@ interface PostProps {
   content: [{ type: string; contentText: string }];
   publishedAt: Date;
 }
+
 export function Post({ author, content, publishedAt }: PostProps) {
   const [newCommentText, setNewCommentText] = useState('');
   const [comments, setComments] = useState(['post muito bacana en']);
@@ -80,7 +81,13 @@ export function Post({ author, content, publishedAt }: PostProps) {
       </form>
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <Comment key={uuid()} content={comment} deleteComment={deleteComment}/>;
+          return (
+            <Comment
+              key={uuid()}
+              content={comment}
+              deleteComment={deleteComment}
+            />
+          );
         })}
       </div>
     </article>

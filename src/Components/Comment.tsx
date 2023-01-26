@@ -5,9 +5,9 @@ interface CommentProps {
   content: string;
   deleteComment: () => string;
 }
-export function Comment({ content, deleteComment }: CommentProps) {
+export function Comment({ content, onDeleteComment }: CommentProps) {
   function handleDeleteComment() {
-    deleteComment(content);
+    onDeleteComment(content);
   }
   return (
     <div className={styles.comment}>
