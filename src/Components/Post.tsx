@@ -3,7 +3,7 @@ import { format, formatDistanceToNow } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import { Comment } from './Comment';
 import styles from './Post.module.css';
-import { FormEvent, useState } from 'react';
+import { FormEvent,ChangeEvent, useState } from 'react';
 import uuid from 'react-uuid';
 interface PostProps {
   author: {
@@ -32,12 +32,26 @@ export function Post({ author, content, publishedAt }: PostProps) {
     setComments([...comments, newCommentText]);
     setNewCommentText('');
   }
-  function handleNewCommentChange(event: FormEvent) {
+  function handleNewCommentChange(event: ChangeEvent<HTMLTextAreaElement>) {
+    event.target.setCustomValidity('');
     setNewCommentText(event.target.value);
   }
-  function deleteComment(comment: string) {
-    console.log(`Deletar comentario ${comment}`);
+  function deleteComment(commentToDelete: string) {
+    const commentWithoutDeletedOne = comments.filter((comment) => {
+      return comment !== commentToDelete;
+    });
+    /*a variavel acima retorna todos os comentario porem sem o comentario
+      em questão que foi deletado.
+      No principio da imutabilidade ao inves de deletar um comentario especifico
+      no array de comentarios , todos os comentario serão gerados novamente porem com
+      a alteração que no caso é para deletar um comentario
+    */
+    setComments(commentWithoutDeletedOne);
   }
+  function handleNewCommentInvalid(event: ChangeEvent<HTMLTextAreaElement>) {
+    event.target.setCustomValidity('Esse campo é obrigatorio');
+  }
+  const isNewCommentEmpty = newCommentText.length === 0;
   return (
     <article className={styles.post}>
       <header>
@@ -74,9 +88,13 @@ export function Post({ author, content, publishedAt }: PostProps) {
           value={newCommentText}
           onChange={handleNewCommentChange}
           placeholder="Deixe seu comentario"
+          onInvalid={handleNewCommentInvalid}
+          required
         />
         <footer>
-          <button type="submit">Publicar</button>
+          <button type="submit" disabled={isNewCommentEmpty}>
+            Publicar
+          </button>
         </footer>
       </form>
       <div className={styles.commentList}>
