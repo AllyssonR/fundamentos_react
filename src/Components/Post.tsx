@@ -17,7 +17,7 @@ interface Content {
 interface PostProps {
   author: Author;
   publishedAt: Date;
-  content: Content;
+  content: Content[];
 }
 export function Post({ author, content, publishedAt }: PostProps) {
   const [newCommentText, setNewCommentText] = useState('');
@@ -76,11 +76,11 @@ export function Post({ author, content, publishedAt }: PostProps) {
       <div className={styles.content}>
         {content.map((line) => {
           if (line.type === 'paragraph') {
-            return <p key={uuid()}>{line.contentText}</p>;
+            return <p key={uuid()}>{line.content}</p>;
           } else if (line.type === 'link') {
             return (
               <p key={uuid()}>
-                <a href="#">{line.contentText}</a>
+                <a href="#">{line.content}</a>
               </p>
             );
           }
