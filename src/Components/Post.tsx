@@ -11,7 +11,7 @@ interface Author {
   avatarUrl: string;
 }
 interface Content {
-  type: 'paragraph' | 'link';
+  type: 'paragraph' | 'link'| string;
   content: string;
 }
 interface PostProps {

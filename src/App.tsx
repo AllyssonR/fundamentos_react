@@ -9,40 +9,41 @@ const posts = [
   {
     id: 1,
     author: {
-      avatarUrl: 'https:github.com/diego3g.png',
-      name: 'Diego Fernandes',
-      role: 'CTO @Rocketseat',
+      avatarUrl: "https:github.com/diego3g.png",
+      name: "Diego Fernandes",
+      role: "CTO @Rocketseat",
     },
     content: [
-      { type: 'paragraph', contentText: 'Fala galeraa 👏' },
+      { type: "paragraph", content: "Fala galeraa 👏" },
       {
-        type: 'paragraph',
-        contentText:
-          ' Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
+        type: "paragraph",
+        content:
+          " Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
       },
-      { type: 'link', contentText: 'jane.design/doctorCare' },
+      { type: "link", content: "jane.design/doctorCare" },
     ],
-    publishedAt: new Date('2022-05-03 20:00:00'),
+    publishedAt: new Date("2022-05-03 20:00:00"),
   },
   {
     id: 2,
     author: {
-      avatarUrl: 'https:github.com/diego3g.png',
-      name: 'Mayk Brito',
-      role: 'Edutator @Rocketseat',
+      avatarUrl: "https:github.com/diego3g.png",
+      name: "Mayk Brito",
+      role: "Edutator @Rocketseat",
     },
     content: [
-      { type: 'paragraph', contentText: 'Fala galeraa 👏' },
+      { type: "paragraph", content: "Fala galeraa 👏" },
       {
-        type: 'paragraph',
+        type: "paragraph",
         content:
-          ' Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',
+          " Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀",
       },
-      { type: 'link', contentText: 'jane.design/doctorCare' },
+      { type: "link", content: "jane.design/doctorCare" },
     ],
-    publishedAt: new Date('2022-05-07 20:00:00'),
+    publishedAt: new Date("2022-05-07 20:00:00"),
   },
 ];
+
 export function App() {
   return (
     <div>
